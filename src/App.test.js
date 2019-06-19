@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Clock from './App';
+// import Clock from './App';
+import Carousel from './Carousel';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Clock />, div);
+  ReactDOM.render(<Carousel />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
