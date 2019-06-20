@@ -1,9 +1,0 @@
-{
-  "movie": 
-    {
-      "id": "01",
-      "title": "Aggretsuko"
-    }
-}
-
-export default data;
