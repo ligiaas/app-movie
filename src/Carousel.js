@@ -2,7 +2,6 @@ import React from 'react';
 import * as api from './api/index';
 import './App.css';
 
-// import { data } from './api/in18.json'; 
 
 
 class Carousel extends React.Component {
@@ -11,20 +10,20 @@ class Carousel extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      img: '',
-      movies: []
+      movies: [],
+      poster: ''
     };
   }
 
   componentDidMount() {
     api.getMovies()
       .then(
-        (result) => {
-          console.log((result));
+        (response) => {
           this.setState({
             isLoaded: true,
-            movies: result
+            movies: response.data.results
           });
+          this.getImages(this.setState.movies);
         },
         (error) => {
           this.setState({
@@ -48,12 +47,12 @@ class Carousel extends React.Component {
     } else {
       return (
         <div>
-          <div className="container">
-            <div className="row">
-              {movies.map((item, index) => (
-                <div className="col-12" key={item.data.results[index].id}>
-                  <p>{item.data.results[index].title}</p>
-                  {/* <img src={`https://image.tmdb.org/t/p/w154${item.data.poster_path}`} alt={item.data.title} className="d-block w-100" /> */}
+          <div className="carousel slide" dataride="carousel">
+            <div className="caousel-inner">
+              {movies.map(item => (
+                <div className="carousel-item" key={item.id}>
+                  {/* <img src={item.poster_path} alt={item.title} className="d-block w-100" /> */}
+                  {/* <h5>{item.title}</h5> */}
                 </div>
               ))}
             </div>

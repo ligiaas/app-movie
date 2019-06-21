@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import Clock from './App';
-import Carousel from './Carousel';
-import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import Navbar from './Navbar';
+// import Carousel from './Carousel';
+import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Carousel />, document.getElementById('root'));
+ReactDOM.render(<Navbar/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
