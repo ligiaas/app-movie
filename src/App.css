@@ -23,6 +23,16 @@
   color: #61dafb;
 }
 
+.navbar {
+  min-height: 50px;
+  background-color: rgb(20,20,20);
+}
+
+.navbar-toggler {
+  color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
 .wm_brand {
   color: #d80a14 !important;
   font-weight: 600;
