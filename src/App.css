@@ -25,8 +25,8 @@
 
 .wm_brand {
   color: #d80a14 !important;
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 @keyframes App-logo-spin {
