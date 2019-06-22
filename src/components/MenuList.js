@@ -1,8 +1,9 @@
 import React from 'react';
 import * as api from '../api/index';
+import Carousel from './Carousel';
 import '../assets/App.css';
 
-class Carousel extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +18,6 @@ class Carousel extends React.Component {
     api.getMovies()
       .then(
         (response) => {
-          console.log(response);
           this.setState({
             isLoaded: true,
             movies: response.data.results
@@ -36,30 +36,22 @@ class Carousel extends React.Component {
   componentWillUnmount() {
     
   }
-  
+
   render() {
     const {error, isLoaded, movies} = this.state;
-    if(error) {
+    if(error){
       return <div>Error: {error.message}</div>;
     } else if(!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
         <div>
-          <div className="carousel slide" dataride="carousel">
-            <div className="carousel-inner">
-              {movies.map(item => (
-                <div className="carousel-item" key={item.id}>
-                  {/* <img src={item.poster_path} alt={item.title} className="d-block w-100" /> */}
-                  <h5>{item.title}</h5>
-                </div>
-              ))}
-            </div>
-          </div>
+          <h3>Mais Populares</h3>
+          <Carousel />
         </div>
       );
     }
   }
 }
 
-export default Carousel;
+export default Home;
