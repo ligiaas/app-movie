@@ -1,6 +1,6 @@
 import React from 'react';
 import * as api from '../api/index';
-import './App.css';
+import '../assets/App.css';
 
 class Carousel extends React.Component {
   constructor(props) {
