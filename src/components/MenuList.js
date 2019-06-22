@@ -18,11 +18,11 @@ class Home extends React.Component {
     api.getMovies()
       .then(
         (response) => {
+          console.log(response);
           this.setState({
             isLoaded: true,
             movies: response.data.results
           });
-          this.getImages(this.setState.movies);
         },
         (error) => {
           this.setState({
@@ -47,7 +47,7 @@ class Home extends React.Component {
       return (
         <div>
           <h3>Mais Populares</h3>
-          <Carousel />
+          <Carousel movies={movies}/>
         </div>
       );
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
-import Carousel from './Carousel';
+import MenuList from './MenuList';
 import '../assets/App.css';
 
 class Home extends React.Component {
@@ -8,8 +8,12 @@ class Home extends React.Component {
     return (
       <div>
         <Navbar/>
-        <div className="fluid-container">
-          <Carousel/>
+        <div className="fluid-container wm-home">
+          <div className="row">
+            <div className="col-12">
+              <MenuList/>
+            </div>
+          </div>
         </div>
       </div>
     );
