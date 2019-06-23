@@ -15,7 +15,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    api.getMovies()
+    api.getListMovies()
       .then(
         (response) => {
           console.log(response);
