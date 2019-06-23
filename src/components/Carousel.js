@@ -1,63 +1,67 @@
 import React from 'react';
-import * as api from '../api/index';
-import './App.css';
+import Slider from 'react-slick';
+import '../assets/App.css';
+import Home from './MenuList';
 
 class Carousel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      movies: [],
-      poster: ''
-    };
-  }
-
-  componentDidMount() {
-    api.getMovies()
-      .then(
-        (response) => {
-          this.setState({
-            isLoaded: true,
-            movies: response.data.results
-          });
-          this.getImages(this.setState.movies);
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-  }
-
-  componentWillUnmount() {
-    
-  }
-  
   render() {
-    const {error, isLoaded, movies} = this.state;
-    if(error) {
-      return <div>Error: {error.message}</div>;
-    } else if(!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-        <div>
-          <div className="carousel slide" dataride="carousel">
-            <div className="caousel-inner">
-              {movies.map(item => (
-                <div className="carousel-item" key={item.id}>
-                  {/* <img src={item.poster_path} alt={item.title} className="d-block w-100" /> */}
-                  {/* <h5>{item.title}</h5> */}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      );
+    const movies = this.props.movies;
+    var settings = {
+      arrows: true,
+      dots: false,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 5,
+      slidesToScroll: 2,
+      centerMode: false,
+      mobileFirst: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 1,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 320,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     }
+    return (
+      <div>
+        <Slider {...settings}>
+          {movies.map(item => (
+            <div className="m-3 carousel-item" key={item.id}>
+              <a href="#">
+                <img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} alt={item.title}/>
+              </a>
+              <div className="wm-car-caption">
+                <h6>{item.title}</h6>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+    );
   }
 }
 
