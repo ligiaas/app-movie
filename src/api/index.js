@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { Promise } from 'q';
-import date from '../utils/date';
+import date from '../utils/Date';
 
 const rootApi = 'https://api.themoviedb.org/';
 const api_key = '9b3b5f58a3aa91db5dca0d71820a7321';
 const languages = ['pt-BR', 'en-US'];
-const discover = `{${rootApi}3/discover/movie?api_key=${api_key}&language=${languages[0]}&}`;
+const discover = `${rootApi}3/discover/movie?api_key=${api_key}&language=${languages[0]}&`;
 
 // Listas primárias [lançamento, mais populares, mais votados, já assistidos]
 var sort_by = ['popularity.desc', 'primary_release_date','vote_count.desc', 'release_date.asc'];

@@ -8,8 +8,7 @@ export default function date(param) {
   mm =  (mm < 10) ? '0' + mm : mm;
   let yyyy = now.getFullYear();
 
-  let dateFormatted = yyyy + '-' + mm + '-' + dd;
-  console.log(dateFormatted)
+  let date = yyyy + '-' + mm + '-' + dd;
   
-  return dateFormatted;
+  return date;
 }

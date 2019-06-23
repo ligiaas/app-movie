@@ -10,63 +10,26 @@ class Home extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      movies: [],
-      poster: ''
+      movies: []
     };
     this.req = [];
   }
 
   componentDidMount() {
-    console.log(api.getMovies);
     api.getMovies()
       .then(responses => {
-        console.log(responses);
         this.setState({
-          
+          isLoaded: true,
+          movies: responses
         })
+      },
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
       }
-        
     )
-    // tratamento dos métodos api
-    // let meth = api;
-    // let meths = Object.keys(meth).map(req => {
-    //   return [req];
-    // })
-    // meths.forEach(m => {
-    //   console.log(m);
-    //   api.${m}()
-    //   .then(
-    //     (response) => {
-    //       console.log(response);
-    //       this.setState({
-    //         isLoaded: true,
-    //         movies: response.data.results
-    //       });
-    //     },
-    //     (error) => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         error
-    //       });
-    //     }
-    //   )
-    // })
-    // api.getListMovies()
-    //   .then(
-    //     (response) => {
-    //       console.log(response);
-    //       this.setState({
-    //         isLoaded: true,
-    //         movies: response.data.results
-    //       });
-    //     },
-    //     (error) => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         error
-    //       });
-    //     }
-    //   )
   }
 
   componentWillUnmount() {
@@ -74,18 +37,25 @@ class Home extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Navbar/>
-        <div className="fluid-container wm-home">
-          <div className="row">
-            <div className="col-12">
-              <MenuList/>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    const {error, isLoaded, movies} = this.state;
+    if(error){
+      return <div>Error: {error.message}</div>;
+    } else if(!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+       <div>
+         <Navbar/>
+         <div className="fluid-container wm-home">
+           <div className="row">
+             <div className="col-12">
+               <MenuList category={movies}/>
+             </div>
+           </div>
+         </div>
+       </div>
+      );
+    }
   }
 }
 

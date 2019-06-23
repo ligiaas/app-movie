@@ -1,11 +1,11 @@
 import React from 'react';
 import Slider from 'react-slick';
 import '../assets/App.css';
-import Home from './MenuList';
 
 class Carousel extends React.Component {
   render() {
-    const movies = this.props.movies;
+    const movies = this.props.options;
+  
     var settings = {
       arrows: true,
       dots: false,
@@ -46,6 +46,7 @@ class Carousel extends React.Component {
         }
       ]
     }
+
     return (
       <div>
         <Slider {...settings}>
