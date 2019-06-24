@@ -3,9 +3,10 @@ import Slider from 'react-slick';
 import '../assets/App.css';
 
 class Carousel extends React.Component {
+
   render() {
-    const movies = this.props.options;
-  
+    var movies = this.props.data.results;
+    
     var settings = {
       arrows: true,
       dots: false,
@@ -15,6 +16,11 @@ class Carousel extends React.Component {
       slidesToScroll: 2,
       centerMode: false,
       mobileFirst: true,
+      // customPaging: function(slider, i) {
+      //   var slide = slider.slides[i],
+      //   title = slide.data('title');
+      //   return '<div>' + title + '<div/>';
+      // },
       responsive: [
         {
           breakpoint: 1024,
@@ -46,7 +52,6 @@ class Carousel extends React.Component {
         }
       ]
     }
-
     return (
       <div>
         <Slider {...settings}>
