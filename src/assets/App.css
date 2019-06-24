@@ -24,6 +24,11 @@
   font-size: 18px;
 }
 
+/* TITLE CAROUSEL */
+.wm-title {
+  display: inline;
+}
+
 /* CAROUSEL */
 
 .wm-car-caption {

@@ -32,10 +32,6 @@ class Home extends React.Component {
     )
   }
 
-  componentWillUnmount() {
-    
-  }
-
   render() {
     const {error, isLoaded, movies} = this.state;
     if(error){

@@ -15,7 +15,7 @@ class Navbar extends React.Component {
       <nav className="navbar navbar-expand-lg navbar-dark">
         <span className="navbar-text wm_brand">Web Movies</span>
         <div className="ml-auto" id="navDrop">
-          <Search/>
+          <Search onSearchTextChange={this.handleSearchTextChange}/>
         </div>
       </nav>
     );
