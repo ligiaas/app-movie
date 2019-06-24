@@ -1,4 +1,4 @@
-## Arquitetura
+### Arquitetura
 
 Projeto está dividido basicamente em 3 diretórios:
   - api: onde está index.js que faz todas as chamadas para API do BD.
@@ -6,7 +6,7 @@ Projeto está dividido basicamente em 3 diretórios:
   - components: onde ficam os componentes.
   Dessa forma o fonte fica organizado e intuitivo para os desenvolvedores.
 
-## Biblioteca
+### Biblioteca
 
 O projeto foi feito com React conforme pedido. Foram usadas as bibliotecas:
   - Bootstrap v4.3: Para ter melhor performance no responsivo.
