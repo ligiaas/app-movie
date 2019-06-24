@@ -39,3 +39,10 @@ export function getMovies() {
     ]
   )
 }
+
+export function searchMovies(value) {
+  let query = value;
+  const search_movies = axios.get(`${rootApi}3/search/movie?api_key=${api_key}&language=${languages[0]}&query=${query}&page=${page}&include_adult=false}`)
+
+  return Promise.resolve(search_movies);
+}

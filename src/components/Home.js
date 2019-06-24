@@ -12,7 +12,6 @@ class Home extends React.Component {
       isLoaded: false,
       movies: []
     };
-    this.req = [];
   }
 
   componentDidMount() {
