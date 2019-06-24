@@ -19,4 +19,5 @@ Se eu pudesse melhoraria o estilo, criaria um novo componente que mostraria mais
 
 ### Requisitos não entregue
 
+Retirei a chamada `latest`pois o retorno da API estava com erro. Voltava o json de um filme e não a lista de filmes.
 Não consegui concluir a exibição de resultados da busca. Não consegui encontrar na documentação do React como enviar valores de componente filho pra pai. Os componentes estão prontos, apenas o envio de dados de baixo pra cima que não consegui concluir. Esse foi o meu primeiro projeto com React então algumas coisas ainda são limitadas pra mim, precisaria de mais tempo para ler e entender a documentação.
