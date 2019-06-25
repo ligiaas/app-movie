@@ -12,6 +12,7 @@ O projeto foi feito com React conforme pedido. Foram usadas as bibliotecas:
   - Bootstrap v4.3: Para ter melhor performance no responsivo.
   - Slick Carousel: Biblioteca de carrossel pois a sua aplicação é muito simples e funcional para manutenção.
   - Axios: Pois é a mais usada para efetuar requisições no DB.
+  - React Router: é a mais simples para rotas de arquivos. Como essa é uma aplicação simples, não requer algo robusto como Redux.
 
 ### Melhorias
 
