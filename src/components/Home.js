@@ -2,6 +2,7 @@ import React from 'react';
 import * as api from '../api/index';
 import Navbar from './Navbar';
 import MenuList from './MenuList';
+import Result from './Result';
 import '../assets/App.css';
 
 class Home extends React.Component {
@@ -10,7 +11,10 @@ class Home extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      movies: []
+      movies: [],
+      value: '',
+      isRet: false,
+      ret: []
     };
   }
 
@@ -30,9 +34,28 @@ class Home extends React.Component {
       }
     )
   }
+  
+  searchMovies() {
+    api.searchMovies(this.state.value)
+      .then(response => {
+        this.setState({
+          isRet: true,
+          ret: response.data.results
+        })
+        console.log(response);
+      },
+      (error) =>{
+        this.setState({
+          isRet: false,
+          error
+        });
+      }  
+    )
+
+  }
 
   render() {
-    const {error, isLoaded, movies} = this.state;
+    const {error, isLoaded, movies, ret, value} = this.state;
     if(error){
       return <div>Error: {error.message}</div>;
     } else if(!isLoaded) {
@@ -40,11 +63,11 @@ class Home extends React.Component {
     } else {
       return (
        <div>
-         <Navbar/>
+         <Navbar searchMovies={this.searchMovies.bind(this)} value={value}/>
          <div className="fluid-container wm-home">
            <div className="row">
              <div className="col-12">
-               <MenuList category={movies}/>
+               {isLoaded ? <MenuList category={movies}/> : <Result result={ret}/>}
              </div>
            </div>
          </div>

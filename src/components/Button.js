@@ -1,22 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Link from 'react-router-dom';
 import Button from '../../node_modules/bootstrap/dist/css/bootstrap.css';
 
-const WmButton = ({ label, primary, secondary, onClick}) =>
-  <Button
-    label={label}
-    primary={primary}
-    secondary={secondary}
-    onClick={onClick}
-  />
+class WmButton extends React.Component {
+  onClick() {
+    return (
+      <Link to="/">Home</Link>
+    );
+  }
 
-const { string, bool, func} = PropTypes
+  render() {
+    const label = this.props.label
 
-Button.PropTypes = {
-  label: string.isRequired,
-  primary: bool.isRequired,
-  secondary: bool,
-  onClick: func.isRequired,
+    return (
+      <Button className="btn btn-outline-light" label={label}/>
+    )
+  }
+
 }
 
 export default WmButton;

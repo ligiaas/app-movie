@@ -1,12 +1,15 @@
 import React from 'react';
+import WmButton from './Button';
 import '../assets/App.css';
 
 class Movie extends React.Component {
   
   render() {
     const record = this.props.item;
+    var label = '← Home';
       return (
         <div>
+          <WmButton label={label}/>
           <div className="card mb-3">
             <div className="row no-gutters">
               <div className="col-md-4">
