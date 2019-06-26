@@ -12,14 +12,14 @@ class Carousel extends React.Component {
       dots: false,
       infinite: false,
       speed: 300,
-      slidesToShow: 5,
+      slidesToShow: 7,
       slidesToScroll: 2,
       centerMode: false,
       responsive: [
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 5,
+            slidesToShow: 4,
             slidesToScroll: 1,
           }
         },
@@ -50,9 +50,9 @@ class Carousel extends React.Component {
       <div>
         <Slider {...settings}>
           {movies.map(item => (
-            <div className="m-3 carousel-item" key={item.id}>
-              <a href="www.google.com">
-                <img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} alt={item.title}/>
+            <div className="m-2 carousel-item" key={item.id}>
+              <a href={`/movie/${item.id}`}>
+                <img src={`https://image.tmdb.org/t/p/w154${item.poster_path}`} alt={item.title}/>
               </a>
               <div className="wm-car-caption">
                 <h6>{item.title}</h6>

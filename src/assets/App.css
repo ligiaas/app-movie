@@ -2,14 +2,10 @@
 @import "../../node_modules/slick-carousel/slick/slick.css";
 @import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
-/* APP */
-.App {
-  color: white;
-}
-
 /* HOME */
 .wm-home {
   padding: 0.5rem 1rem;
+  color: white;
 }
 
 /* NAVBAR */
@@ -21,7 +17,23 @@
 .wm_brand {
   color: #d80a14 !important;
   font-weight: 600;
-  font-size: 18px;
+}
+a:hover {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+/* MOVIE */
+.wm-card {
+  background-color: rgb(20,20,20);
+}
+.card-body {
+  padding: 0 1.25rem;
+}
+.card-img {
+  max-width: 60%;
+  display: block;
+  margin: auto;
 }
 
 /* TITLE CAROUSEL */

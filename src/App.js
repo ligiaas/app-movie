@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './components/Home';
 import Result from './components/Result';
-import MovieRecord from './components/MovieRecord';
+import Movie from './components/Movie';
 import './assets/App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <div>
         <Route exact path="/" component={Home} />
         <Route path="/result" component={Result} />
-        <Route path="/movie" component={MovieRecord} />
+        <Route path="/movie:handle" component={Movie} />
       </div>
     </Router>
   );
