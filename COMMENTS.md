@@ -16,9 +16,9 @@ O projeto foi feito com React conforme pedido. Foram usadas as bibliotecas:
 
 ### Melhorias
 
-Se eu pudesse melhoraria o estilo, criaria um novo componente que mostraria mais detalhes do filme selecionado, com a função de acrescentar e remover um filme da sua lista. Criaria um outro componente de player para o usuário ver o trailer do filme. Estudaria melhor a API do TMDB para melhorar as chamadas de imagem. Sei que da forma que está feita não é a melhor prática. Pois quanto mais chamadas você faz ao db mais a performance do usuário é impactada.
+Se eu pudesse melhoraria o estilo da aplicação como um todo. Colocaria efeitos de transição, no componente que mostra os detalhes do filme selecionado criaria um botão com a função de acrescentar e remover um filme da sua lista. Criaria um outro componente de player para o usuário ver o trailer do filme. Estudaria melhor a API do TMDB para melhorar as chamadas de imagem. Sei que da forma que está feita não é a melhor prática. Pois quanto mais chamadas você faz ao db mais a performance do usuário é impactada.
 
 ### Requisitos não entregue
 
 Retirei a chamada `latest`pois o retorno da API estava com erro. Voltava o json de um filme e não a lista de filmes.
-Não consegui concluir a exibição de resultados da busca. Não consegui encontrar na documentação do React como enviar valores de componente filho pra pai. Os componentes estão prontos, apenas o envio de dados de baixo pra cima que não consegui concluir. Esse foi o meu primeiro projeto com React então algumas coisas ainda são limitadas pra mim, precisaria de mais tempo para ler e entender a documentação.
+Não consegui fazer o loader com a % de carregamento. Não consegui encontrar na documentação do React como enviar valores de componente filho pra pai. Esse foi o meu primeiro projeto com React então algumas coisas ainda são limitadas pra mim, precisaria de mais tempo para ler e entender a documentação e melhores práticas.
