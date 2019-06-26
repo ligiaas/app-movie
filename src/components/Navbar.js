@@ -3,31 +3,39 @@ import '../assets/App.css';
 
 class Navbar extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ''
+    };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
   onChange(e) {
-    e.preventDefault();
+    e.persist();
     this.setState({value: e.target.value});
   }
 
   onSubmit(e) {
     e.preventDefault();
-    if(e.target.value <= 3){
+    if(this.state.value <= 3){
       alert('Dados incorretos! Por favor tente novamente.');
     } else {
-      this.searchMovies();
-      console.log(e);
+      this.props.searchMovies(this.state.value);
+      console.log(this.state.value);
     }
   }
   
   render() {
-    const val = this.props.value;
     return (
       <nav className="navbar navbar-expand-lg navbar-dark">
-        <span className="navbar-text wm_brand">Web Movies</span>
+        <h1><a className="wm_brand" href="/">Web Movies</a></h1>
         <div className="ml-auto" id="navDrop">
-          <form className="form-inline ml-auto my-2 my-lg-0" onSubmit={e => this.onSubmit(e)}>
-            <input className="form-control mr-sm-2" type="search" placeholder="Pesquisar..." aria-label="Pesquisar" defaultValue={val}/>
-            <input className="btn btn-outline-light my-2 my-sm-0" type="submit" value="Pesquisar"/>
-          </form> 
+        <form className="form-inline ml-auto my-2 my-lg-0" onSubmit={this.onSubmit}>
+          <input className="form-control mr-sm-2" type="search" placeholder="Busca por filme" aria-label="Pesquisar" value={this.state.value} onChange={this.onChange}/>
+          <input className="btn btn-outline-light my-2 my-sm-0" type="submit" value="Pesquisar"/>
+        </form> 
         </div>
       </nav>
     );

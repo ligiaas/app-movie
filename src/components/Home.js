@@ -12,9 +12,8 @@ class Home extends React.Component {
       error: null,
       isLoaded: false,
       movies: [],
-      value: '',
-      isRet: false,
-      ret: []
+      searchResult: [],
+      isRes: false
     };
   }
 
@@ -35,18 +34,19 @@ class Home extends React.Component {
     )
   }
   
-  searchMovies() {
-    api.searchMovies(this.state.value)
+  searchMovies(val) {
+    api.searchMovies(val)
       .then(response => {
         this.setState({
-          isRet: true,
-          ret: response.data.results
+          isLoaded: true,
+          isRes: true,
+          searchResult: response.data.results
         })
         console.log(response);
       },
       (error) =>{
         this.setState({
-          isRet: false,
+          isLoaded: false,
           error
         });
       }  
@@ -55,7 +55,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const {error, isLoaded, movies, ret, value} = this.state;
+    const {error, isLoaded, isRes, movies, searchResult} = this.state;
     if(error){
       return <div>Error: {error.message}</div>;
     } else if(!isLoaded) {
@@ -63,11 +63,12 @@ class Home extends React.Component {
     } else {
       return (
        <div>
-         <Navbar searchMovies={this.searchMovies.bind(this)} value={value}/>
+         <Navbar searchMovies={this.searchMovies.bind(this)}/>
          <div className="fluid-container wm-home">
            <div className="row">
              <div className="col-12">
-               {isLoaded ? <MenuList category={movies}/> : <Result result={ret}/>}
+               {isRes ? <Result result={searchResult}/> : <MenuList category={movies}/>}
+               {console.log(searchResult)}
              </div>
            </div>
          </div>
