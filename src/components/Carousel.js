@@ -52,7 +52,9 @@ class Carousel extends React.Component {
           {movies.map(item => (
             <div className="m-2 carousel-item" key={item.id}>
               <a href={`/movie/${item.id}`}>
-                <img src={`https://image.tmdb.org/t/p/w154${item.poster_path}`} alt={item.title}/>
+                {
+                  item.poster_path ? <img src={`https://image.tmdb.org/t/p/w154${item.poster_path}`} alt={item.title}/> : <p>Imagem não disponível</p>
+                }
               </a>
               <div className="wm-car-caption">
                 <h6>{item.title}</h6>

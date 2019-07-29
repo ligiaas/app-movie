@@ -50,6 +50,7 @@ export function searchMovies(value) {
 export function getMovie(value) {
   let query = value;
   const movie = axios.get(`${rootApi}3/movie/${query}?api_key=${api_key}&language=${languages[0]}}`)
+  
 
   return Promise.resolve(movie);
 }

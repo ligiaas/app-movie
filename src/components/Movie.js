@@ -38,9 +38,8 @@ class Movie extends React.Component {
   }
   
   render() {
-    const {poster_path, overview, release_date, title, runtime, vote_average} = this.state.movie
-    const time = (`${parseInt(runtime / 60)}h${runtime % 60}min`)
-    console.log(this.state.movie);
+    const {poster_path, overview, release_date, title, runtime, vote_average} = this.state.movie;
+    const time = (`${parseInt(runtime / 60)}h${runtime % 60}min`);
       return (
         <div>
           <Navbar/>

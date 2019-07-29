@@ -23,7 +23,6 @@ class Navbar extends React.Component {
       alert('Dados incorretos! Por favor tente novamente.');
     } else {
       this.props.searchMovies(this.state.value);
-      console.log(this.state.value);
     }
   }
   

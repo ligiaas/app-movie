@@ -42,7 +42,6 @@ class Home extends React.Component {
           isRes: true,
           searchResult: response.data.results
         })
-        console.log(response);
       },
       (error) =>{
         this.setState({
@@ -68,7 +67,6 @@ class Home extends React.Component {
            <div className="row">
              <div className="col-12">
                {isRes ? <Result result={searchResult}/> : <MenuList category={movies}/>}
-               {console.log(searchResult)}
              </div>
            </div>
          </div>
