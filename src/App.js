@@ -11,7 +11,7 @@ function App() {
       <div>
         <Route exact path="/" component={Home} />
         <Route path="/result" component={Result} />
-        <Route path="/movie:handle" component={Movie} />
+        <Route path="/movie/:handle" component={Movie} />
       </div>
     </Router>
   );
