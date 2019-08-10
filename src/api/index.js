@@ -1,32 +1,37 @@
 import axios from 'axios';
-import { Promise } from 'q';
 
-const rootApi = 'https://api.themoviedb.org/';
-const api_key = '9b3b5f58a3aa91db5dca0d71820a7321';
-const languages = ['pt-BR', 'en-US'];
-// qtde de filmes por requisição 20 p/ página
-var page = 1;
-const primary = `?api_key=${api_key}&language=${languages[0]}&page=${page}`;
+const rootApi = process.env.REACT_APP_ROOT_API;
+const queryParams = {
+  api_key: process.env.REACT_APP_API_KEY,
+  language: 'pt-BR',
+  page: 1,
+  include_adult: false,
+};
 
-// Listas primárias [em cartaz, mais votados, popular, próximos lançamentos]
-var sort_by = ['now_playing','top_rated', 'popular', 'upcoming'];
+const buildUrl = (index, type = 'movies') => {
+  if (type === 'movies') {
+    // Listas primárias [em cartaz, mais votados, popular, próximos lançamentos]
+    let sort_by = ['now_playing','top_rated', 'popular', 'upcoming'];
+    return axios.get(`${rootApi}/3/movie/${sort_by[index]}`, { params: queryParams });
+  }
 
-// Listas personalizadas [marvel, 007, animados]
-var list_id = ['114888', '114886', '114884',];
-
+  // Listas personalizadas [marvel, 007, animados]
+  let list_id = ['114888', '114886', '114884',];
+  return axios.get(`${rootApi}4/list/${list_id[index]}`, { params: queryParams });
+}
 
 export function getMovies() {
 
   // Listas primárias
-  const now_playing = axios.get(`${rootApi}/3/movie/${sort_by[0]}${primary}`);
-  const top_rated = axios.get(`${rootApi}/3/movie/${sort_by[1]}${primary}`);
-  const popular = axios.get(`${rootApi}/3/movie/${sort_by[2]}${primary}`);
-  const upcoming = axios.get(`${rootApi}/3/movie/${sort_by[3]}${primary}`);
+  const now_playing = buildUrl(0);
+  const top_rated = buildUrl(1);
+  const popular = buildUrl(2);
+  const upcoming = buildUrl(3);
 
   // Listas personalizadas
-  const marvel = axios.get(`${rootApi}4/list/${list_id[0]}?api_key=${api_key}&language=${languages[0]}&page=${page}`);
-  const jb = axios.get(`${rootApi}4/list/${list_id[1]}?api_key=${api_key}&language=${languages[0]}&page=${page}`);
-  const animate = axios.get(`${rootApi}4/list/${list_id[2]}?api_key=${api_key}&language=${languages[0]}&page=${page}`);
+  const marvel = buildUrl(0, 'list');
+  const jb = buildUrl(1, 'list');
+  const animate = buildUrl(2, 'list');
 
   return Promise.all(
     [ now_playing,
@@ -40,17 +45,15 @@ export function getMovies() {
   )
 }
 
-export function searchMovies(value) {
-  let query = value;
-  const search_movies = axios.get(`${rootApi}3/search/movie?api_key=${api_key}&language=${languages[0]}&query=${query}&page=${page}&include_adult=false}`)
-
-  return Promise.resolve(search_movies);
+export function searchMovies(query) {
+  return axios.get(`${rootApi}3/search/movie`, {
+    params: {
+      ...queryParams,
+      query,
+    }
+  });
 }
 
-export function getMovie(value) {
-  let query = value;
-  const movie = axios.get(`${rootApi}3/movie/${query}?api_key=${api_key}&language=${languages[0]}}`)
-  
-
-  return Promise.resolve(movie);
+export function getMovie(query) {
+  return axios.get(`${rootApi}3/movie/${query}`, { params: queryParams });
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as api from '../api/index';
 import Navbar from './Navbar';
 import MenuList from './MenuList';
@@ -33,7 +33,7 @@ class Home extends React.Component {
       }
     )
   }
-  
+
   searchMovies(val) {
     api.searchMovies(val)
       .then(response => {
@@ -48,7 +48,7 @@ class Home extends React.Component {
           isLoaded: false,
           error
         });
-      }  
+      }
     )
 
   }

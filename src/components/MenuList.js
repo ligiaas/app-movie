@@ -18,7 +18,7 @@ class MenuList extends React.Component {
     movies.forEach((el, index) => {
       el.title = titles[index]
     });
-    
+
     return (
       <div>
         {movies.map((item, index) => (
