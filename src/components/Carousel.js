@@ -5,9 +5,9 @@ import '../assets/App.css';
 class Carousel extends React.Component {
 
   render() {
-    var movies = this.props.data.results;
-    
-    var settings = {
+    let movies = this.props.data.results;
+    console.log(movies);
+    let settings = {
       arrows: true,
       dots: false,
       infinite: false,

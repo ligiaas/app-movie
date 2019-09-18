@@ -18,10 +18,10 @@ var list_id = ['114888', '114886', '114884'];
 export function getMovies() {
 
   // Listas primárias
-  const now_playing = axios.get(`${rootApi}/3/movie/${sort_by[0]}${primary}`);
-  const top_rated = axios.get(`${rootApi}/3/movie/${sort_by[1]}${primary}`);
-  const popular = axios.get(`${rootApi}/3/movie/${sort_by[2]}${primary}`);
-  const upcoming = axios.get(`${rootApi}/3/movie/${sort_by[3]}${primary}`);
+  const now_playing = axios.get(`${rootApi}3/movie/${sort_by[0]}${primary}`);
+  const top_rated = axios.get(`${rootApi}3/movie/${sort_by[1]}${primary}`);
+  const popular = axios.get(`${rootApi}3/movie/${sort_by[2]}${primary}`);
+  const upcoming = axios.get(`${rootApi}3/movie/${sort_by[3]}${primary}`);
 
   // Listas personalizadas
   const marvel = axios.get(`${rootApi}4/list/${list_id[0]}?api_key=${api_key}&language=${languages[0]}&page=${page}`);
@@ -42,14 +42,14 @@ export function getMovies() {
 
 export function searchMovies(value) {
   let query = value;
-  const search_movies = axios.get(`${rootApi}3/search/movie?api_key=${api_key}&language=${languages[0]}&query=${query}&page=${page}&include_adult=false}`)
+  const search_movies = axios.get(`${rootApi}/3/search/movie?api_key=${api_key}&language=${languages[0]}&query=${query}&page=${page}&include_adult=false}`)
 
   return Promise.resolve(search_movies);
 }
 
 export function getMovie(value) {
   let query = value;
-  const movie = axios.get(`${rootApi}3/movie/${query}?api_key=${api_key}&language=${languages[0]}}`)
+  const movie = axios.get(`${rootApi}/3/movie/${query}?api_key=${api_key}&language=${languages[0]}}`)
   
 
   return Promise.resolve(movie);
