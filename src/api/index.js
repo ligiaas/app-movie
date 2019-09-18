@@ -12,7 +12,7 @@ const primary = `?api_key=${api_key}&language=${languages[0]}&page=${page}`;
 var sort_by = ['now_playing','top_rated', 'popular', 'upcoming'];
 
 // Listas personalizadas [marvel, 007, animados]
-var list_id = ['114888', '114886', '114884',];
+var list_id = ['114888', '114886', '114884'];
 
 
 export function getMovies() {
