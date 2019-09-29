@@ -1,11 +1,18 @@
 import React from 'react';
 import * as api from '../api/index';
-import Navbar from './Navbar';
-import MenuList from './MenuList';
-import Result from './Result';
-import '../assets/App.css';
+import Navbar from '../components/Navbar';
+import MenuList from '../components/MenuList';
+import Result from '../components/Result';
+import HomeComponent from '../components/HomeComponent';
 
-class Home extends React.Component {
+/*
+1- Trata de estilos porque importa CSS -> Component
+2- Trata de Estados -> Container
+3-> Trata de Chamadas HTTP -> (É do Container, mas pode ser melhor abstraído)
+4-> Regras de visualização que poderiam ser melhor abstraídas.
+*/
+
+class HomeContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +40,7 @@ class Home extends React.Component {
       }
     )
   }
-  
+
   searchMovies(val) {
     api.searchMovies(val)
       .then(response => {
@@ -48,32 +55,31 @@ class Home extends React.Component {
           isLoaded: false,
           error
         });
-      }  
+      }
     )
 
   }
 
   render() {
     const {error, isLoaded, isRes, movies, searchResult} = this.state;
-    if(error){
+
+    if (error) {
       return <div>Error: {error.message}</div>;
-    } else if(!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-       <div>
-         <Navbar searchMovies={this.searchMovies.bind(this)}/>
-         <div className="fluid-container wm-home">
-           <div className="row">
-             <div className="col-12">
-               {isRes ? <Result result={searchResult}/> : <MenuList category={movies}/>}
-             </div>
-           </div>
-         </div>
-       </div>
-      );
     }
+
+    if (!isLoaded) {
+      return <div>Loading...</div>;
+    }
+
+    return (
+      <>
+        <Navbar searchMovies={this.searchMovies.bind(this)}/>
+        <HomeComponent>
+          { isRes ? <Result result={searchResult}/> : <MenuList category={movies}/> }
+        </HomeComponent>
+      </>
+    );
   }
 }
 
-export default Home;
+export default HomeContainer;

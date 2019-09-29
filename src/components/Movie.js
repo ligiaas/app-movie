@@ -1,7 +1,6 @@
 import React from 'react';
 import * as api from '../api/index';
 import Navbar from './Navbar';
-import '../assets/App.css';
 
 class Movie extends React.Component {
 
@@ -36,7 +35,7 @@ class Movie extends React.Component {
       }
     )
   }
-  
+
   render() {
     const {poster_path, overview, release_date, title, runtime, vote_average} = this.state.movie;
     const time = (`${parseInt(runtime / 60)}h${runtime % 60}min`);

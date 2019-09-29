@@ -1,37 +1,32 @@
 import React from 'react';
 import Carousel from './Carousel';
-import '../assets/App.css';
+import TitleRowComponent from './TitleRowComponent';
 
-class MenuList extends React.Component {
+const MenuList = ({ category }) => {
 
-  render() {
-    const movies = this.props.category;
-    var titles = [
-      'Em cartaz',
-      'Mais votados',
-      'Populares',
-      'Próximos lançamentos',
-      'Marvel',
-      '007 - James Bond',
-      'Animados'
-    ];
-    movies.forEach((el, index) => {
-      el.title = titles[index]
-    });
-    
-    return (
-      <div>
-        {movies.map((item, index) => (
-          <div key={index}>
-            <h5>{item.title}</h5>
-            <div>
-              <Carousel data={item.data}/>
-            </div>
-          </div>
-        ))}
-      </div>
-     );
-  }
+  const movies = category;
+  const titles = [
+    'Em cartaz',
+    'Mais votados',
+    'Populares',
+    'Próximos lançamentos',
+    'Marvel',
+    '007 - James Bond',
+    'Animados'
+  ];
+  movies.forEach((el, index) => {
+    el.title = titles[index]
+  });
+
+  return (
+    <>
+      {movies.map((item, index) => (
+        <TitleRowComponent titleLabel={item.title} key={item.id}>
+          <Carousel data={item.data}/>
+        </TitleRowComponent>
+      ))}
+    </>
+  );
 }
 
 export default MenuList;

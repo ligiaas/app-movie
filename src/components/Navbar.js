@@ -1,5 +1,4 @@
 import React from 'react';
-import '../assets/App.css';
 
 class Navbar extends React.Component {
 
@@ -25,7 +24,7 @@ class Navbar extends React.Component {
       this.props.searchMovies(this.state.value);
     }
   }
-  
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark">
@@ -34,7 +33,7 @@ class Navbar extends React.Component {
         <form className="form-inline ml-auto my-2 my-lg-0" onSubmit={this.onSubmit}>
           <input className="form-control mr-sm-2" type="search" placeholder="Busca por filme" aria-label="Pesquisar" value={this.state.value} onChange={this.onChange}/>
           <input className="btn btn-outline-light my-2 my-sm-0" type="submit" value="Pesquisar"/>
-        </form> 
+        </form>
         </div>
       </nav>
     );
