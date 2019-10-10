@@ -5,7 +5,6 @@ class Carousel extends React.Component {
 
   render() {
     let movies = this.props.data.results;
-    console.log(movies);
     let settings = {
       arrows: true,
       dots: false,

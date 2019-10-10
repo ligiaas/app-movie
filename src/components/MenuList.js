@@ -21,7 +21,7 @@ const MenuList = ({ category }) => {
   return (
     <>
       {movies.map((item, index) => (
-        <TitleRowComponent titleLabel={item.title} key={item.id}>
+        <TitleRowComponent titleLabel={item.title} key={index}>
           <Carousel data={item.data}/>
         </TitleRowComponent>
       ))}

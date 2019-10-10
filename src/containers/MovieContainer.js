@@ -1,35 +1,36 @@
 import React from 'react';
 import * as api from '../api/index';
+import MovieComponent from '../components/MovieComponent';
 import Navbar from '../components/Navbar';
-import MenuList from '../components/MenuList';
 import Result from '../components/Result';
-import HomeComponent from '../components/HomeComponent';
 
-/*
-1- Trata de estilos porque importa CSS -> Component
-2- Trata de Estados -> Container
-3-> Trata de Chamadas HTTP -> (É do Container, mas pode ser melhor abstraído)
-4-> Regras de visualização que poderiam ser melhor abstraídas. -> Component
-*/
+class Movie extends React.Component {
 
-class HomeContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      movies: [],
+      movie: {
+        poster_path: '',
+        overview: '',
+        release_date: '',
+        title: '',
+        vote_average: '',
+        runtime: null
+      },
       searchResult: [],
       isRes: false
     };
   }
 
   componentDidMount() {
-    api.getMovies()
-      .then(responses => {
+    const { handle } = this.props.match.params
+    api.getMovie(handle)
+      .then(response => {
         this.setState({
           isLoaded: true,
-          movies: responses
+          movie: response.data
         })
       },
       (error) => {
@@ -57,29 +58,25 @@ class HomeContainer extends React.Component {
         });
       }
     )
-
   }
 
   render() {
-    const {error, isLoaded, isRes, movies, searchResult} = this.state;
+    const {error, isLoaded, isRes, movie, searchResult} = this.state;
 
-    if (error) {
+    if(error) {
       return <div>Error: {error.message}</div>;
     }
 
-    if (!isLoaded) {
+    if(!isLoaded) {
       return <div>Loading...</div>;
     }
-
-    return (
-      <>
-        <Navbar searchMovies={this.searchMovies.bind(this)}/>
-        <HomeComponent>
-          { isRes ? <Result result={searchResult}/> : <MenuList category={movies}/> }
-        </HomeComponent>
-      </>
-    );
+      return (
+        <>
+          <Navbar searchMovies={this.searchMovies.bind(this)}/>
+          { isRes ? <Result result={searchResult}/> : <MovieComponent movie={movie}/>}
+        </>
+      );
   }
 }
 
-export default HomeContainer;
+export default Movie;

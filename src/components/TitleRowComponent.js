@@ -10,8 +10,9 @@ const TitleRowComponent = ({ titleLabel, children }) => {
   );
 }
 
+// exibe o tipo das propriedades do componente, se são obrigatórias ou não.
 TitleRowComponent.propTypes = {
-  itemLabel: PropTypes.string.isRequired,
+  titleLabel: PropTypes.string.isRequired,
   children: PropTypes.node,
 }
 
